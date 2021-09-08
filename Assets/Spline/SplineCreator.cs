@@ -23,20 +23,25 @@ public class SplineCreator
     private readonly Scripted2DSpline spline2D;
     private readonly ScriptedLevel level;
     private readonly float spacing;
+    private readonly OrientedPoint[] evenlySpacedPoints;
 
     public SplineCreator(Scripted2DSpline _spline2D, ScriptedLevel _level, float _spacing)
     {
         this.spline2D = _spline2D;
         this.level = _level;
         this.spacing = _spacing;
+        this.evenlySpacedPoints = GetEvenlySpacedPoints(GetCurvePoints(this.level));
     }
-
+    
     public Mesh GetSplineMesh()
     {
-        Vector3[] curvePoints = GetCurvePoints(level);
-        OrientedPoint[] evenPoints = GetEvenlySpacedPoints(curvePoints);
-        return CreateMeshOnCurve(evenPoints, spline2D); ;
+        return CreateMeshOnCurve(evenlySpacedPoints, spline2D); ;
     }
+    public OrientedPoint[] GetEvenlySpacedPoints()
+    {
+        return evenlySpacedPoints;
+    }
+    
 
     /// <summary>
     /// Returns an array of the bezier point positions in the format [a, c, c, a, c, c, a]
@@ -93,7 +98,7 @@ public class SplineCreator
             {
                 OrientedPoint currentOriPoint = GetBezierOrientedPoint(a1, c1, c2, a2, t);
                 Vector3 pointDelta = currentOriPoint.point - lastPointPos;
-                if (Vector3.SqrMagnitude(pointDelta) >= spacingSquared)
+                if (Vector3.SqrMagnitude(pointDelta) >= spacingSquared || (i == 0 && t == 0))
                 {
                     //It has reached the correct spacing from the last point
                     lastPointPos = currentOriPoint.point;
