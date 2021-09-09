@@ -3,21 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Set the level and spline2D so it knows what it's creating
-//The goal of this script is to output a mesh of the spline
-
-/*
- -Make an array that stores all of the segments.
-	-A segment is 2 control points and 2 anchor points.
--Start finding all the points of the segment by incrementing t by a small amount.
--Find the distance between the new point and last point in the segment.
--If the distance is greater than our splineDetail, then we add that point and orientation to the next part.
--If t ever becomes greater than 1, move onto the next segment 
--If there are no more segments, we are done finding the evenly spaced points.
-
--Next, run through all the even points and start adding to the mesh data using the orientation.
-*/
-
 public class SplineCreator
 {
     private readonly Scripted2DSpline spline2D;
@@ -31,6 +16,7 @@ public class SplineCreator
         this.level = _level;
         this.spacing = _spacing;
         this.evenlySpacedPoints = GetEvenlySpacedPoints(GetCurvePoints(this.level));
+        
     }
     
     public Mesh GetSplineMesh()
@@ -50,6 +36,7 @@ public class SplineCreator
     {
         int bezierPointCount = (_level.bezierCurve.Length * 3) - 2;
         Vector3[] points = new Vector3[bezierPointCount];
+        
         int currentSegmentIndex = 0;
         for (int i = 0; i < _level.bezierCurve.Length; i++)
         {
@@ -121,7 +108,7 @@ public class SplineCreator
         Vector3[] normals = new Vector3[_evenPoints.Length * _spline2D.verts.Length];
         Vector2[] uvs = new Vector2[_evenPoints.Length * _spline2D.verts.Length];
         int[] triangles = new int[(_evenPoints.Length - 1) * _spline2D.vertPairs.Length * 6];
-
+        
         for (int i = 0; i < _evenPoints.Length; i++)
         {
             int vLength = _spline2D.verts.Length;
@@ -134,11 +121,11 @@ public class SplineCreator
                 positions[(i * vLength) + p] = newPos;
                 //Rotates each normal
                 Vector3 newNormal = _spline2D.verts[p].normal;
-                newNormal = _evenPoints[i].rotation * newNormal;
+                newNormal = _evenPoints[i].rotation * newNormal.normalized;
                 newNormal.Normalize();
                 normals[(i * vLength) + p] = newNormal;
                 //Adds uvs
-                uvs[(i * vLength) + p] = _spline2D.verts[p].uv;
+                uvs[(i * vLength) + p] = new Vector2(_spline2D.verts[p].uCoord, i * _spline2D.vCoordDelta);
             }
 
             //Calculates the triangle indices for the extruded mesh

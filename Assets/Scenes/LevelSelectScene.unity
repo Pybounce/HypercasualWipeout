@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7e1d7a1ec245e344bb4119de42c00ee7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.3100586, g: 0.62793124, b: 0.7250979, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,7 +390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5bdaa1d9a815d41958f52680851fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  level: {fileID: 11400000, guid: c3e4bfbb8cd700445b72e67becfac100, type: 2}
+  spline2D: {fileID: 11400000, guid: 6ce9c45f570c4d9409e5b294339880c0, type: 2}
 --- !u!1 &194800235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1063,7 @@ GameObject:
   - component: {fileID: 877340511}
   - component: {fileID: 877340510}
   - component: {fileID: 877340509}
+  - component: {fileID: 877340512}
   m_Layer: 5
   m_Name: Level 2 Button
   m_TagString: Untagged
@@ -1132,7 +1134,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877340510}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877340512}
+        m_TargetAssemblyTypeName: SelectLevel, Assembly-CSharp
+        m_MethodName: LevelSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877340510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,6 +1185,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877340507}
   m_CullTransparentMesh: 1
+--- !u!114 &877340512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877340507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5bdaa1d9a815d41958f52680851fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 11400000, guid: 19ac13e91db662a4bb88c7eedbb2ede0, type: 2}
+  spline2D: {fileID: 11400000, guid: 6ce9c45f570c4d9409e5b294339880c0, type: 2}
 --- !u!1 &1038196383
 GameObject:
   m_ObjectHideFlags: 0

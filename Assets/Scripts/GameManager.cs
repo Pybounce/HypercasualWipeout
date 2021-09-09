@@ -5,15 +5,22 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private SplineCreator levelSpline;
-    [SerializeField] private Scripted2DSpline spline2D;
-    [SerializeField] private ScriptedLevel level;
+    private Scripted2DSpline spline2D;
+    private ScriptedLevel level;
     [SerializeField] private float splineSpacing = 2f;
     
     private void Awake()
     {
+        GetLevelSettings();
         CreateSpline();
+        CreateProps();
     }
-
+    private void GetLevelSettings()
+    {
+        LevelSettings levelSettingsObj = GameObject.FindObjectOfType<LevelSettings>();
+        this.level = levelSettingsObj.GetLevel();
+        this.spline2D = levelSettingsObj.GetSpline();
+    }
     private void CreateSpline()
     {
         levelSpline = new SplineCreator(spline2D, level, splineSpacing);
@@ -21,6 +28,12 @@ public class GameManager : MonoBehaviour
         path.AddComponent<MeshFilter>();
         path.AddComponent<MeshRenderer>();
         path.GetComponent<MeshFilter>().mesh = levelSpline.GetSplineMesh();
+        path.GetComponent<MeshRenderer>().sharedMaterial = spline2D.material;
+    }
+    private void CreateProps()
+    {
+        PropCreator propCreator = new PropCreator(level.propData, levelSpline.GetEvenlySpacedPoints());
+        propCreator.CreateProps();
     }
 
     public SplineCreator GetSpline()

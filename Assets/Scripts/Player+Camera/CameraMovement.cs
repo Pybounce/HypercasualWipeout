@@ -11,7 +11,10 @@ public class CameraMovement : MonoBehaviour
     
     private void LateUpdate()
     {
-        FollowPlayer();
+        if (cameraFollowObject != null)
+        {
+            FollowPlayer();
+        }
     }
 
     private void FollowPlayer()
