@@ -5,22 +5,23 @@ using UnityEngine;
 public class LevelSettings : MonoBehaviour
 {
     private ScriptedLevel level;
-    private Scripted2DSpline spline2D;
+    private bool hasInitialised = false;
 
    
-    public void SetSettings(ScriptedLevel _level, Scripted2DSpline _spline2D)
+    public void Init(ScriptedLevel _level)
     {
-        level = _level;
-        spline2D = _spline2D;
+        if (!hasInitialised)
+        {
+            level = _level;
+            hasInitialised = true;
+        }
+        
     }
     public ScriptedLevel GetLevel()
     {
         return this.level;
     }
-    public Scripted2DSpline GetSpline()
-    {
-        return this.spline2D;
-    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Scripted2DSpline : ScriptableObject
 {
     public Material material;
-    public float vCoordDelta;
+    public Vector2 uvDelta;
+    public Vector2 splineOffset;
     public vert2D[] verts;
     public Vector2Int[] vertPairs;
 }
@@ -14,6 +15,6 @@ public class Scripted2DSpline : ScriptableObject
 public struct vert2D
 {
     public Vector2 position;
-    public float uCoord;
+    public Vector2 uv;
     public Vector2 normal;
 }

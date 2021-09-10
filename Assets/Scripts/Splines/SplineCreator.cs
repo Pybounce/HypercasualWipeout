@@ -5,23 +5,21 @@ using UnityEngine;
 
 public class SplineCreator
 {
-    private readonly Scripted2DSpline spline2D;
     private readonly ScriptedLevel level;
     private readonly float spacing;
     private readonly OrientedPoint[] evenlySpacedPoints;
 
-    public SplineCreator(Scripted2DSpline _spline2D, ScriptedLevel _level, float _spacing)
+    public SplineCreator(ScriptedLevel _level, float _spacing)
     {
-        this.spline2D = _spline2D;
         this.level = _level;
         this.spacing = _spacing;
         this.evenlySpacedPoints = GetEvenlySpacedPoints(GetCurvePoints(this.level));
         
     }
     
-    public Mesh GetSplineMesh()
+    public Mesh GetSplineMesh(Scripted2DSpline spline2D)
     {
-        return CreateMeshOnCurve(evenlySpacedPoints, spline2D); ;
+        return CreateMeshOnCurve(evenlySpacedPoints, spline2D);
     }
     public OrientedPoint[] GetEvenlySpacedPoints()
     {
@@ -115,7 +113,7 @@ public class SplineCreator
             for (int p = 0; p < vLength; p++)
             {
                 //Rotates each point in the 2D spline so that it's facing the curves direction
-                Vector3 newPos = _spline2D.verts[p].position;
+                Vector3 newPos = _spline2D.verts[p].position + _spline2D.splineOffset;
                 newPos = _evenPoints[i].rotation * newPos;
                 newPos += _evenPoints[i].point;
                 positions[(i * vLength) + p] = newPos;
@@ -125,7 +123,7 @@ public class SplineCreator
                 newNormal.Normalize();
                 normals[(i * vLength) + p] = newNormal;
                 //Adds uvs
-                uvs[(i * vLength) + p] = new Vector2(_spline2D.verts[p].uCoord, i * _spline2D.vCoordDelta);
+                uvs[(i * vLength) + p] = _spline2D.verts[p].uv + (i * _spline2D.uvDelta);
             }
 
             //Calculates the triangle indices for the extruded mesh

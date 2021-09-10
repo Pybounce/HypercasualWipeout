@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3b44f33548c8846b4956f9484c37f8, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
+  laneCount: 1
+  laneWidth: 2
+  spacing: 1
+  splineTemplates:
+  - {fileID: 11400000, guid: 6ce9c45f570c4d9409e5b294339880c0, type: 2}
+  - {fileID: 11400000, guid: b13c0d7ef85d2b941922fcf1b2450490, type: 2}
+  - {fileID: 11400000, guid: d702465d9791cc74ea9361b39333efbb, type: 2}
   bezierCurve:
   - anchorPosition: {x: 0, y: 0, z: 0}
     controlRotation: -90
@@ -28,24 +35,68 @@ MonoBehaviour:
   propData:
   - propObject: {fileID: 8139760671391241917, guid: 56d08d58d1d98fd43bf5eda1adfaa8b2,
       type: 3}
-    positions:
-    - {x: 20, y: 0}
-    - {x: 40, y: -2}
-    - {x: 60, y: 0}
+    clusterData:
+    - startIndex: 14
+      interval: 0
+      amount: 1
+      horizontalPosition: 0
+      useLaneWidth: 1
+    - startIndex: 38
+      interval: 0
+      amount: 1
+      horizontalPosition: -1
+      useLaneWidth: 1
+    - startIndex: 60
+      interval: 0
+      amount: 1
+      horizontalPosition: 1
+      useLaneWidth: 1
+    - startIndex: 90
+      interval: 0
+      amount: 1
+      horizontalPosition: 1
+      useLaneWidth: 1
   - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
       type: 3}
-    positions:
-    - {x: 20, y: 2}
-    - {x: 22, y: 2}
-    - {x: 24, y: 2}
-    - {x: 26, y: 2}
-    - {x: 28, y: 2}
-    - {x: 30, y: 2}
-    - {x: 45, y: 0}
-    - {x: 47, y: 0}
-    - {x: 49, y: 0}
-    - {x: 51, y: 0}
-    - {x: 45, y: -2}
-    - {x: 47, y: -2}
-    - {x: 49, y: -2}
-    - {x: 51, y: -2}
+    clusterData:
+    - startIndex: 23
+      interval: 2
+      amount: 6
+      horizontalPosition: -1
+      useLaneWidth: 1
+    - startIndex: 12
+      interval: 2
+      amount: 8
+      horizontalPosition: 1
+      useLaneWidth: 1
+    - startIndex: 50
+      interval: 2
+      amount: 5
+      horizontalPosition: 0
+      useLaneWidth: 1
+    - startIndex: 90
+      interval: 2
+      amount: 7
+      horizontalPosition: 1
+      useLaneWidth: 1
+  - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
+      type: 3}
+    clusterData:
+    - startIndex: 120
+      interval: 1
+      amount: 1
+      horizontalPosition: 0
+      useLaneWidth: 1
+  - propObject: {fileID: 4192630690710829668, guid: 7fb61b5a97efa0344b599bff55986cd3,
+      type: 3}
+    clusterData:
+    - startIndex: 0
+      interval: 25
+      amount: 4
+      horizontalPosition: 3.8
+      useLaneWidth: 0
+    - startIndex: 0
+      interval: 25
+      amount: 4
+      horizontalPosition: -3.8
+      useLaneWidth: 0
