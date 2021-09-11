@@ -26,14 +26,53 @@ MonoBehaviour:
   - anchorPosition: {x: 20, y: 0, z: 30}
     controlRotation: 0
     controlScale: 15
-  - anchorPosition: {x: 40, y: 0, z: 0}
+  - anchorPosition: {x: 40, y: 0, z: 50}
     controlRotation: 0
     controlScale: 10
   - anchorPosition: {x: 80, y: 0, z: 20}
     controlRotation: 0
     controlScale: 10
   propData:
-  - propObject: {fileID: 8139760671391241917, guid: 56d08d58d1d98fd43bf5eda1adfaa8b2,
+  - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
+      type: 3}
+    clusterData:
+    - startIndex: 118
+      interval: 1
+      amount: 1
+      horizontalPosition: 0
+      useLaneWidth: 1
+  - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
+      type: 3}
+    clusterData:
+    - startIndex: 12
+      interval: 2
+      amount: 8
+      horizontalPosition: 1
+      useLaneWidth: 1
+    - startIndex: 50
+      interval: 2
+      amount: 5
+      horizontalPosition: 0
+      useLaneWidth: 1
+    - startIndex: 93
+      interval: 2
+      amount: 7
+      horizontalPosition: 1
+      useLaneWidth: 1
+  - propObject: {fileID: 4192630690710829668, guid: 7fb61b5a97efa0344b599bff55986cd3,
+      type: 3}
+    clusterData:
+    - startIndex: 0
+      interval: 25
+      amount: 4
+      horizontalPosition: 3.8
+      useLaneWidth: 0
+    - startIndex: 0
+      interval: 25
+      amount: 4
+      horizontalPosition: -3.8
+      useLaneWidth: 0
+  - propObject: {fileID: 7614726855355320726, guid: c8c52cc13770c154cb9ab0a47dae1ac5,
       type: 3}
     clusterData:
     - startIndex: 14
@@ -51,52 +90,17 @@ MonoBehaviour:
       amount: 1
       horizontalPosition: 1
       useLaneWidth: 1
+  - propObject: {fileID: 6273235066043090891, guid: bb4d74ea32a062e4c94fb39eccc3a808,
+      type: 3}
+    clusterData:
     - startIndex: 90
       interval: 0
       amount: 1
-      horizontalPosition: 1
-      useLaneWidth: 1
-  - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
-      type: 3}
-    clusterData:
-    - startIndex: 23
-      interval: 2
-      amount: 6
-      horizontalPosition: -1
-      useLaneWidth: 1
-    - startIndex: 12
-      interval: 2
-      amount: 8
-      horizontalPosition: 1
-      useLaneWidth: 1
-    - startIndex: 50
-      interval: 2
-      amount: 5
       horizontalPosition: 0
       useLaneWidth: 1
-    - startIndex: 90
-      interval: 2
-      amount: 7
-      horizontalPosition: 1
-      useLaneWidth: 1
-  - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
+  - propObject: {fileID: 2417559368710016421, guid: abb53f08d606e7a4db217857acacb13a,
       type: 3}
-    clusterData:
-    - startIndex: 120
-      interval: 1
-      amount: 1
-      horizontalPosition: 0
-      useLaneWidth: 1
-  - propObject: {fileID: 4192630690710829668, guid: 7fb61b5a97efa0344b599bff55986cd3,
+    clusterData: []
+  - propObject: {fileID: 7625222401847562674, guid: 37ac2b707e54d034fbb604123d0220a5,
       type: 3}
-    clusterData:
-    - startIndex: 0
-      interval: 25
-      amount: 4
-      horizontalPosition: 3.8
-      useLaneWidth: 0
-    - startIndex: 0
-      interval: 25
-      amount: 4
-      horizontalPosition: -3.8
-      useLaneWidth: 0
+    clusterData: []

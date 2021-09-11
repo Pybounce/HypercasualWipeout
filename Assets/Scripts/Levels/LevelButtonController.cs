@@ -3,12 +3,11 @@ using UnityEngine;
 public class LevelButtonController : MonoBehaviour
 {
     [SerializeField] private ScriptedLevel level;
-    [SerializeField] private Scripted2DSpline spline2D;
 
     
     public void LevelSelected()
     {
-        if (level != null && spline2D != null)
+        if (level != null)
         {
             LoadLevel();
         }
