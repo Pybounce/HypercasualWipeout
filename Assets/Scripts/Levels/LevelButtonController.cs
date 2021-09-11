@@ -1,4 +1,3 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LevelButtonController : MonoBehaviour
@@ -23,6 +22,6 @@ public class LevelButtonController : MonoBehaviour
         GameObject levelSettingsObject = new GameObject();
         levelSettingsObject.name = "LevelSettingsObject";
         levelSettingsObject.AddComponent<LevelSettings>().Init(level);
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(PybUtilityScene.LoadScene("GameScene"));
     }
 }

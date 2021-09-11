@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
 public class PlayerMovementJump : MonoBehaviour, IListenUpSwipe
 {
+    private PlayerController playerController;
 
     private bool isJumping = false;
     private float jumpVelocity = 0;
@@ -11,15 +13,25 @@ public class PlayerMovementJump : MonoBehaviour, IListenUpSwipe
     [SerializeField] private float jumpForce = 0f;
     [SerializeField] private float gravity = -9.8f;
 
+    private void Awake()
+    {
+        playerController = this.GetComponent<PlayerController>();
+    }
+
     private void Update()
     {
-        SimulateVerticalMovement();
+
+            SimulateVerticalMovement();
+        
     }
 
     public void SwipedUp()
     {
-        Jump();
-        
+        if (playerController.GetState(PlayerState.Sliding) == false)
+        {
+            playerController.SetState(PlayerState.Jumping, true);
+            Jump();
+        }
     }
 
     private void Jump()
@@ -41,6 +53,7 @@ public class PlayerMovementJump : MonoBehaviour, IListenUpSwipe
             if (jumpDelta <= 0f)
             {
                 isJumping = false;
+                playerController.SetState(PlayerState.Jumping, false);
                 transform.localPosition += new Vector3(0, -jumpDelta, 0);
             }
             else
