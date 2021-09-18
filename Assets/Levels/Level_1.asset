@@ -19,19 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ce9c45f570c4d9409e5b294339880c0, type: 2}
   - {fileID: 11400000, guid: b13c0d7ef85d2b941922fcf1b2450490, type: 2}
   - {fileID: 11400000, guid: d702465d9791cc74ea9361b39333efbb, type: 2}
-  bezierCurve:
-  - anchorPosition: {x: 0, y: 0, z: 0}
-    controlRotation: -90
-    controlScale: 10
-  - anchorPosition: {x: 20, y: 0, z: 30}
-    controlRotation: 0
-    controlScale: 15
-  - anchorPosition: {x: 40, y: 0, z: 50}
-    controlRotation: 0
-    controlScale: 10
-  - anchorPosition: {x: 80, y: 0, z: 20}
-    controlRotation: 0
-    controlScale: 10
+  curvePoints: []
   propData:
   - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
       type: 3}

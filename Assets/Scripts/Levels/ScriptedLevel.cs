@@ -9,17 +9,10 @@ public class ScriptedLevel : ScriptableObject
     public float laneWidth;
     public float spacing;
     public Scripted2DSpline[] splineTemplates;
-    public BezierPoint[] bezierCurve;
+    public Vector3[] curvePoints;
     public PropData[] propData;
 }
 
-[Serializable]
-public struct BezierPoint
-{
-    public Vector3 anchorPosition;
-    public float controlRotation;
-    public float controlScale;
-}
 
 [Serializable]
 public struct PropData

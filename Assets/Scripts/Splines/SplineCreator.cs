@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class SplineCreator
 {
     private readonly ScriptedLevel level;
@@ -13,7 +14,7 @@ public class SplineCreator
     {
         this.level = _level;
         this.spacing = _spacing;
-        this.evenlySpacedPoints = GetEvenlySpacedPoints(GetCurvePoints(this.level));
+        this.evenlySpacedPoints = GetEvenlySpacedPoints(this.level.curvePoints);
         
     }
     
@@ -25,42 +26,11 @@ public class SplineCreator
     {
         return evenlySpacedPoints;
     }
-    
-
-    /// <summary>
-    /// Returns an array of the bezier point positions in the format [a, c, c, a, c, c, a]
-    /// </summary>
-    private Vector3[] GetCurvePoints(ScriptedLevel _level)
+    public Vector3[] GetCurvePoints()
     {
-        int bezierPointCount = (_level.bezierCurve.Length * 3) - 2;
-        Vector3[] points = new Vector3[bezierPointCount];
-        
-        int currentSegmentIndex = 0;
-        for (int i = 0; i < _level.bezierCurve.Length; i++)
-        {
-            BezierPoint bp = _level.bezierCurve[i];
-            Quaternion rot = Quaternion.AngleAxis(bp.controlRotation, Vector3.up);
-            Vector3 controlOne = new Vector3(bp.controlScale, 0, 0);
-            controlOne = rot * controlOne;
-            controlOne += bp.anchorPosition;
-            Vector3 controlTwo = new Vector3(-bp.controlScale, 0, 0);
-            controlTwo = rot * controlTwo;
-            controlTwo += bp.anchorPosition;
-            if (i > 0)
-            {
-                points[currentSegmentIndex] = controlTwo;
-                currentSegmentIndex += 1;
-            }
-            points[currentSegmentIndex] = bp.anchorPosition;
-            currentSegmentIndex += 1;
-            if (i < _level.bezierCurve.Length - 1)
-            {
-                points[currentSegmentIndex] = controlOne;
-                currentSegmentIndex += 1;
-            }
-        }
-        return points;
+        return this.level.curvePoints;
     }
+
     /// <summary>
     /// Gets evenly spaced points along a bezier curve
     /// </summary>
@@ -162,8 +132,6 @@ public class SplineCreator
         Quaternion r = Quaternion.LookRotation((bccd - abbc).normalized);
         return new OrientedPoint(p, r);
     }
-
-
 
 }
 

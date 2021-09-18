@@ -14,5 +14,9 @@ public static class PybUtilityScene
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(sceneName);
     }
+    public static Scene GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene();
+    }
     
 }
