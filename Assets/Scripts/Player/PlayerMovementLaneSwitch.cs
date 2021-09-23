@@ -14,7 +14,7 @@ public class PlayerMovementLaneSwitch : MonoBehaviour, IListenRightSwipe, IListe
     // Start is called before the first frame update
     void Start()
     {
-        LevelSettings levelSettings = FindObjectOfType<LevelSettings>();
+        LevelManager levelSettings = FindObjectOfType<LevelManager>();
         laneWidth = levelSettings.GetLevel().laneWidth;
         laneCount = levelSettings.GetLevel().laneCount;
     }

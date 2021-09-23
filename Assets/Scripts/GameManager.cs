@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
     private void RetrieveLevelSettings()
     {
-        LevelSettings levelSettingsObj = GameObject.FindObjectOfType<LevelSettings>();
+        LevelManager levelSettingsObj = GameObject.FindObjectOfType<LevelManager>();
         this.level = levelSettingsObj.GetLevel();
     }
     private void CreateSpline()

@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5bdaa1d9a815d41958f52680851fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: c3e4bfbb8cd700445b72e67becfac100, type: 2}
+  levelIndex: 1
 --- !u!1 &635940649
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5bdaa1d9a815d41958f52680851fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: fb70500a6b5b03b418288ddd00824dd3, type: 2}
+  levelIndex: 2
 --- !u!1 &1038196383
 GameObject:
   m_ObjectHideFlags: 0

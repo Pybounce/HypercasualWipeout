@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PropCreator
 {
@@ -8,6 +11,7 @@ public class PropCreator
     private readonly OrientedPoint[] evenPoints;
     private readonly int laneCount;
     private readonly float laneWidth;
+    private LevelManager levelManager;
 
     public PropCreator(PropData[] _data, OrientedPoint[] _evenPoints, float _laneWidth, int _laneCount)
     {
@@ -15,6 +19,7 @@ public class PropCreator
         this.evenPoints = _evenPoints;
         this.laneWidth = _laneWidth;
         this.laneCount = _laneCount;
+        this.levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
         
     public void CreateProps()
@@ -38,22 +43,21 @@ public class PropCreator
                             if (horizontalPos <= laneCount && horizontalPos >= -laneCount)
                             {
                                 horizontalPos = prop.clusterData[clusterDataIndex].horizontalPosition * laneWidth;
-                                SpawnProp(prop.propObject, evenIndex, horizontalPos);
                             }
                             else
                             {
-                                Debug.LogWarning("Prop lane out of bounds - Prop = "  + prop.propObject);
+                                Debug.LogWarning("Prop lane out of bounds - Prop = "  + prop.propAssetRef);
+                                continue;
                             }
                         }
-                        else
-                        {
-                            SpawnProp(prop.propObject, evenIndex, horizontalPos);
-                        }
+                        
+                        SpawnProp(prop.propAssetRef, evenIndex, horizontalPos);
+                        
 
                     }
                     else
                     {
-                        Debug.LogWarning("Prop even index out of bounds - Prop = " + prop.propObject);
+                        Debug.LogWarning("Prop even index out of bounds - Prop = " + prop.propAssetRef);
                     }
                 }
             }
@@ -63,12 +67,13 @@ public class PropCreator
 
     }
 
-    private void SpawnProp(GameObject _prop, int _evenIndex, float _horizontalPos)
+    private void SpawnProp(AssetReference _propAssetRef, int _evenIndex, float _horizontalPos)
     {
-        
-        GameObject newObstacle = GameObject.Instantiate(_prop);
-        newObstacle.transform.position = (evenPoints[_evenIndex].rotation * new Vector3(_horizontalPos, 0f, 0f)) + evenPoints[_evenIndex].point;
-        newObstacle.transform.rotation = evenPoints[_evenIndex].rotation;
+       
+        GameObject newProp = levelManager.GetLoadedPrefab(_propAssetRef);
+        newProp.transform.SetPositionAndRotation((evenPoints[_evenIndex].rotation * new Vector3(_horizontalPos, 0f, 0f)) + evenPoints[_evenIndex].point, evenPoints[_evenIndex].rotation);
     }
+
+
 
 }

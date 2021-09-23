@@ -15,7 +15,7 @@ public class WaypointNodeMovement : MonoBehaviour
     private void Start()
     {
         waypoints = FindObjectOfType<GameManager>().GetSpline().GetEvenlySpacedPoints();
-        waypointSpacing = FindObjectOfType<LevelSettings>().GetLevel().spacing;
+        waypointSpacing = FindObjectOfType<LevelManager>().GetLevel().spacing;
         transform.position = waypoints[0].point;
         direction = waypoints[currentWaypoint + 1].point - waypoints[currentWaypoint].point;
         direction.Normalize();

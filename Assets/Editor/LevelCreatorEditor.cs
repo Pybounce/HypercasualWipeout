@@ -150,6 +150,7 @@ public class LevelCreatorEditor : Editor
         newCurvePoints[newCurvePoints.Length - 2] = _position - (direction * newControlMag);
         newCurvePoints[newCurvePoints.Length - 1] = _position;
         levelCreator.level.curvePoints = newCurvePoints;
+       
         curvePoints = newCurvePoints;
         AlignControlRotations(newCurvePoints.Length - 5, newCurvePoints.Length - 3);
     }

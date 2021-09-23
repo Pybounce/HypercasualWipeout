@@ -24,7 +24,7 @@ public class FinishlineController : MonoBehaviour
             {
                 confetti.Play();
             }
-            StartCoroutine(PybUtilityScene.LoadScene("LevelSelectScene", 6f));
+            FindObjectOfType<LevelManager>().LoadNextLevel();
         }
     }
 }

@@ -19,10 +19,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ce9c45f570c4d9409e5b294339880c0, type: 2}
   - {fileID: 11400000, guid: b13c0d7ef85d2b941922fcf1b2450490, type: 2}
   - {fileID: 11400000, guid: d702465d9791cc74ea9361b39333efbb, type: 2}
-  curvePoints: []
+  curvePoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 10}
+  - {x: 0, y: 0, z: 20}
+  - {x: 0, y: 0, z: 30}
+  - {x: 0, y: 0, z: 40}
+  - {x: 0, y: 0, z: 50}
+  - {x: 0, y: 0, z: 60}
+  - {x: 0, y: 0, z: 60}
+  - {x: 0, y: 0, z: 60}
+  - {x: 0, y: 0, z: 200}
   propData:
   - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
       type: 3}
+    propAssetRef:
+      m_AssetGUID: 3884f8d2662cc134ea8f3a3290ef2437
+      m_SubObjectName: 
+      m_SubObjectType: 
     clusterData:
     - startIndex: 118
       interval: 1
@@ -31,6 +45,10 @@ MonoBehaviour:
       useLaneWidth: 1
   - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
       type: 3}
+    propAssetRef:
+      m_AssetGUID: 34e99e4d2e9942743b23bf4903e284f3
+      m_SubObjectName: 
+      m_SubObjectType: 
     clusterData:
     - startIndex: 12
       interval: 2
@@ -49,6 +67,10 @@ MonoBehaviour:
       useLaneWidth: 1
   - propObject: {fileID: 4192630690710829668, guid: 7fb61b5a97efa0344b599bff55986cd3,
       type: 3}
+    propAssetRef:
+      m_AssetGUID: c8c52cc13770c154cb9ab0a47dae1ac5
+      m_SubObjectName: 
+      m_SubObjectType: 
     clusterData:
     - startIndex: 0
       interval: 25
@@ -62,6 +84,10 @@ MonoBehaviour:
       useLaneWidth: 0
   - propObject: {fileID: 7614726855355320726, guid: c8c52cc13770c154cb9ab0a47dae1ac5,
       type: 3}
+    propAssetRef:
+      m_AssetGUID: abb53f08d606e7a4db217857acacb13a
+      m_SubObjectName: 
+      m_SubObjectType: 
     clusterData:
     - startIndex: 14
       interval: 0
@@ -80,15 +106,13 @@ MonoBehaviour:
       useLaneWidth: 1
   - propObject: {fileID: 6273235066043090891, guid: bb4d74ea32a062e4c94fb39eccc3a808,
       type: 3}
+    propAssetRef:
+      m_AssetGUID: 37ac2b707e54d034fbb604123d0220a5
+      m_SubObjectName: 
+      m_SubObjectType: 
     clusterData:
     - startIndex: 90
       interval: 0
       amount: 1
       horizontalPosition: 0
       useLaneWidth: 1
-  - propObject: {fileID: 2417559368710016421, guid: abb53f08d606e7a4db217857acacb13a,
-      type: 3}
-    clusterData: []
-  - propObject: {fileID: 7625222401847562674, guid: 37ac2b707e54d034fbb604123d0220a5,
-      type: 3}
-    clusterData: []

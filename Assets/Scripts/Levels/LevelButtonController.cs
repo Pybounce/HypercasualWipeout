@@ -2,25 +2,17 @@ using UnityEngine;
 
 public class LevelButtonController : MonoBehaviour
 {
-    [SerializeField] private ScriptedLevel level;
+    [SerializeField] private int levelIndex;
 
     
     public void LevelSelected()
     {
-        if (level != null)
-        {
-            LoadLevel();
-        }
-        else
-        {
-            Debug.LogWarning("Level button has null reference");
-        }
+        LoadLevel(levelIndex);
     }
-    private void LoadLevel()
+    private void LoadLevel(int _levelIndex)
     {
         GameObject levelSettingsObject = new GameObject();
         levelSettingsObject.name = "LevelSettingsObject";
-        levelSettingsObject.AddComponent<LevelSettings>().Init(level);
-        StartCoroutine(PybUtilityScene.LoadScene("GameScene"));
+        levelSettingsObject.AddComponent<LevelManager>().LoadLevel(_levelIndex);
     }
 }
