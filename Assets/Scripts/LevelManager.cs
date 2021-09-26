@@ -12,25 +12,21 @@ public class LevelManager : MonoBehaviour
     private AsyncOperationHandle levelOpHandle;
     private Dictionary<AssetReference, GameObject> loadedPrefabs = new Dictionary<AssetReference, GameObject>();
     private Dictionary<AssetReference, AsyncOperationHandle<GameObject>> handles = new Dictionary<AssetReference, AsyncOperationHandle<GameObject>>();
-
+    private Dictionary<string, AssetReference> propAssetReferences = new Dictionary<string, AssetReference>();
 
     public void LoadLevel(int _levelIndex)
     {
         levelIndex = _levelIndex;
 
         //Release the old handles/prefabs
-        print("1");
         CleanUpAddressables();
-        print("2");
+        propAssetReferences.Clear();
         if (levelOpHandle.IsValid())
         {
-            print("3");
             Addressables.Release(levelOpHandle);
-            print("4");
         }
 
         //Load new level
-        print("Assets/Levels/Level_" + levelIndex + ".asset");
         levelOpHandle = Addressables.LoadAssetAsync<ScriptedLevel>("Assets/Levels/Level_" + _levelIndex + ".asset");
         levelOpHandle.Completed += handle =>
         {
@@ -38,23 +34,25 @@ public class LevelManager : MonoBehaviour
             //Load new props
             for (int i = 0; i < level.propData.Length; i++)
             {
-                LoadAddressable(level.propData[i].propAssetRef);
+                LoadAddressable(level.propData[i].assetPath);
             }
 
-            StartCoroutine(PybUtilityScene.LoadScene("GameScene"));
+            StartCoroutine(PybUtilityScene.LoadScene("GameScene", 3f));
         };
 
 
     }
 
-    private void LoadAddressable(AssetReference _assetRef)
+    private void LoadAddressable(string _assetPath)
     {
-        var op = Addressables.LoadAssetAsync<GameObject>(_assetRef);
-        handles.Add(_assetRef, op);
+        AssetReference currentRef = new AssetReference(_assetPath);
+        propAssetReferences.Add(_assetPath, currentRef);
+        var op = Addressables.LoadAssetAsync<GameObject>(currentRef);
+        handles.Add(currentRef, op);
         op.Completed += handle =>
         {
             var prefab = handle.Result;
-            loadedPrefabs.Add(_assetRef, prefab);
+            loadedPrefabs.Add(currentRef, prefab);
         };
     }
 
@@ -64,7 +62,6 @@ public class LevelManager : MonoBehaviour
         {
             foreach (KeyValuePair<AssetReference, GameObject> entry in loadedPrefabs)
             {
-                // do something with entry.Value or entry.Key
                 Addressables.ReleaseInstance(entry.Value.gameObject);
             }
         }
@@ -72,7 +69,6 @@ public class LevelManager : MonoBehaviour
         {
             foreach (KeyValuePair<AssetReference, AsyncOperationHandle<GameObject>> entry in handles)
             {
-                // do something with entry.Value or entry.Key
                 if (entry.Key.IsValid())
                 {
                     Addressables.Release(entry.Value);
@@ -82,9 +78,11 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public GameObject GetLoadedPrefab(AssetReference _assetRef)
+    public GameObject GetLoadedPrefab(string _assetPath)
     {
-        return GameObject.Instantiate(loadedPrefabs[_assetRef]);
+
+        AssetReference assetReference = propAssetReferences[_assetPath];
+        return GameObject.Instantiate(loadedPrefabs[assetReference]);
     }
 
 

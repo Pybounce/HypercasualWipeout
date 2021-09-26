@@ -28,24 +28,16 @@ MonoBehaviour:
   - {x: 30, y: 0, z: 50}
   - {x: 30, y: 0, z: 60}
   propData:
-  - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: 3884f8d2662cc134ea8f3a3290ef2437
-      m_SubObjectName: 
-      m_SubObjectType: 
+  - propName: 
+    assetPath: Assets/Props/Enviroment/FinishlineProp.prefab
     clusterData:
     - startIndex: 118
       interval: 1
       amount: 1
       horizontalPosition: 0
       useLaneWidth: 1
-  - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: 34e99e4d2e9942743b23bf4903e284f3
-      m_SubObjectName: 
-      m_SubObjectType: 
+  - propName: 
+    assetPath: Assets/Props/Collectables/Diamond/Diamond.prefab
     clusterData:
     - startIndex: 12
       interval: 2

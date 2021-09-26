@@ -19,7 +19,8 @@ public class ScriptedLevel : ScriptableObject
 [Serializable]
 public struct PropData
 {
-    public AssetReference propAssetRef;
+    //public AssetReference propAssetRef;
+    public string assetPath;
     public PropClusterData[] clusterData;
     [Serializable]
     public struct PropClusterData

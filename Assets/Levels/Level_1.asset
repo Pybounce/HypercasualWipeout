@@ -31,24 +31,16 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 60}
   - {x: 0, y: 0, z: 200}
   propData:
-  - propObject: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: 3884f8d2662cc134ea8f3a3290ef2437
-      m_SubObjectName: 
-      m_SubObjectType: 
+  - propName: FinishLine
+    assetPath: Assets/Props/Enviroment/FinishlineProp.prefab
     clusterData:
     - startIndex: 118
       interval: 1
       amount: 1
       horizontalPosition: 0
       useLaneWidth: 1
-  - propObject: {fileID: 8548384359547071360, guid: 34e99e4d2e9942743b23bf4903e284f3,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: 34e99e4d2e9942743b23bf4903e284f3
-      m_SubObjectName: 
-      m_SubObjectType: 
+  - propName: 
+    assetPath: Assets/Props/Collectables/Diamond/Diamond.prefab
     clusterData:
     - startIndex: 12
       interval: 2
@@ -65,54 +57,11 @@ MonoBehaviour:
       amount: 7
       horizontalPosition: 1
       useLaneWidth: 1
-  - propObject: {fileID: 4192630690710829668, guid: 7fb61b5a97efa0344b599bff55986cd3,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: c8c52cc13770c154cb9ab0a47dae1ac5
-      m_SubObjectName: 
-      m_SubObjectType: 
+  - propName: 
+    assetPath: Assets/Props/Obstacles/Obstacle01.prefab
     clusterData:
-    - startIndex: 0
+    - startIndex: 10
       interval: 25
       amount: 4
-      horizontalPosition: 3.8
-      useLaneWidth: 0
-    - startIndex: 0
-      interval: 25
-      amount: 4
-      horizontalPosition: -3.8
-      useLaneWidth: 0
-  - propObject: {fileID: 7614726855355320726, guid: c8c52cc13770c154cb9ab0a47dae1ac5,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: abb53f08d606e7a4db217857acacb13a
-      m_SubObjectName: 
-      m_SubObjectType: 
-    clusterData:
-    - startIndex: 14
-      interval: 0
-      amount: 1
-      horizontalPosition: 0
-      useLaneWidth: 1
-    - startIndex: 38
-      interval: 0
-      amount: 1
-      horizontalPosition: -1
-      useLaneWidth: 1
-    - startIndex: 60
-      interval: 0
-      amount: 1
       horizontalPosition: 1
-      useLaneWidth: 1
-  - propObject: {fileID: 6273235066043090891, guid: bb4d74ea32a062e4c94fb39eccc3a808,
-      type: 3}
-    propAssetRef:
-      m_AssetGUID: 37ac2b707e54d034fbb604123d0220a5
-      m_SubObjectName: 
-      m_SubObjectType: 
-    clusterData:
-    - startIndex: 90
-      interval: 0
-      amount: 1
-      horizontalPosition: 0
       useLaneWidth: 1

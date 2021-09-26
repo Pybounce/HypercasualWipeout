@@ -8,10 +8,11 @@ public class LevelCreator : MonoBehaviour
     public ScriptedLevel level;
     private static GameObject[] splines;
     public SplineCreator splineCreator;
+    private PropCreator propCreator;
 
     public void LoadSplines()
     {
-        ClearSplines();
+        ClearAll();
         CheckCurvePoints();
         splineCreator = new SplineCreator(level, level.spacing);
         splines = new GameObject[level.splineTemplates.Length];
@@ -23,7 +24,12 @@ public class LevelCreator : MonoBehaviour
             newSplineObject.GetComponent<MeshFilter>().mesh = splineCreator.GetSplineMesh(level.splineTemplates[spline]);
             newSplineObject.GetComponent<MeshRenderer>().sharedMaterial = level.splineTemplates[spline].material;
             splines[spline] = newSplineObject;
-        }
+        }   
+
+        propCreator = new PropCreator(level.propData, splineCreator.GetEvenlySpacedPoints(), level.laneWidth, level.laneCount, false);
+        propCreator.CreateProps();
+
+
     }
 
     private void CheckCurvePoints()
@@ -53,11 +59,21 @@ public class LevelCreator : MonoBehaviour
             }
         }
     }
+    private void ClearProps()
+    {
+        if (propCreator == null) { return; }
+        foreach(GameObject prop in propCreator.GetProps())
+        {
+            DestroyImmediate(prop);
+        }
+    }
     
     public void ClearAll()
     {
         ClearSplines();
+        ClearProps();
         splineCreator = null;
+        propCreator = null;
     }
 
 }

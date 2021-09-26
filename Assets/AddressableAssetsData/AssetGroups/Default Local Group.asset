@@ -53,8 +53,10 @@ MonoBehaviour:
     m_Address: Assets/Props/Enviroment/FinishlineProp.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
+      type: 3}
+    m_TargetAsset: {fileID: 7401490620721447688, guid: 3884f8d2662cc134ea8f3a3290ef2437,
+      type: 3}
   - m_GUID: 7fb61b5a97efa0344b599bff55986cd3
     m_Address: Assets/Props/Enviroment/WallProp01.prefab
     m_ReadOnly: 0
@@ -65,8 +67,8 @@ MonoBehaviour:
     m_Address: Assets/Levels/Level_1.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: c3e4bfbb8cd700445b72e67becfac100, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: c3e4bfbb8cd700445b72e67becfac100, type: 2}
   - m_GUID: bd258a2e28087904caac4c1697ecc8c4
     m_Address: Assets/Levels/Level_2.asset
     m_ReadOnly: 0

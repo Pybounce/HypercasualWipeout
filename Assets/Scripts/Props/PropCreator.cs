@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEditor;
 
 public class PropCreator
 {
@@ -11,14 +12,23 @@ public class PropCreator
     private readonly OrientedPoint[] evenPoints;
     private readonly int laneCount;
     private readonly float laneWidth;
+    private bool useAddressables;
     private LevelManager levelManager;
 
-    public PropCreator(PropData[] _data, OrientedPoint[] _evenPoints, float _laneWidth, int _laneCount)
+    private List<GameObject> props = new List<GameObject>();
+    public List<GameObject> GetProps()
+    {
+        return props;
+    }
+
+
+    public PropCreator(PropData[] _data, OrientedPoint[] _evenPoints, float _laneWidth, int _laneCount, bool _useAddressables = true)
     {
         this.propData = _data;
         this.evenPoints = _evenPoints;
         this.laneWidth = _laneWidth;
         this.laneCount = _laneCount;
+        this.useAddressables = _useAddressables;
         this.levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
         
@@ -46,18 +56,18 @@ public class PropCreator
                             }
                             else
                             {
-                                Debug.LogWarning("Prop lane out of bounds - Prop = "  + prop.propAssetRef);
+                                Debug.LogWarning("Prop lane out of bounds - Prop = "  + prop.assetPath);
                                 continue;
                             }
                         }
                         
-                        SpawnProp(prop.propAssetRef, evenIndex, horizontalPos);
+                        SpawnProp(prop.assetPath, evenIndex, horizontalPos);
                         
 
                     }
                     else
                     {
-                        Debug.LogWarning("Prop even index out of bounds - Prop = " + prop.propAssetRef);
+                        Debug.LogWarning("Prop even index out of bounds - Prop = " + prop.assetPath);
                     }
                 }
             }
@@ -67,11 +77,18 @@ public class PropCreator
 
     }
 
-    private void SpawnProp(AssetReference _propAssetRef, int _evenIndex, float _horizontalPos)
+    private void SpawnProp(string _assetPath, int _evenIndex, float _horizontalPos)
     {
-       
-        GameObject newProp = levelManager.GetLoadedPrefab(_propAssetRef);
+        if (useAddressables)
+        {
+            GameObject addressableProp = levelManager.GetLoadedPrefab(_assetPath);
+            addressableProp.transform.SetPositionAndRotation((evenPoints[_evenIndex].rotation * new Vector3(_horizontalPos, 0f, 0f)) + evenPoints[_evenIndex].point, evenPoints[_evenIndex].rotation);
+            return;
+        }
+        GameObject prefabProp = (GameObject)AssetDatabase.LoadAssetAtPath(_assetPath, typeof(object));
+        GameObject newProp = GameObject.Instantiate(prefabProp);
         newProp.transform.SetPositionAndRotation((evenPoints[_evenIndex].rotation * new Vector3(_horizontalPos, 0f, 0f)) + evenPoints[_evenIndex].point, evenPoints[_evenIndex].rotation);
+        props.Add(newProp);
     }
 
 
